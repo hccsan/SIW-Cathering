@@ -20,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * WebSecurityConfigurerAdapter, meaning that it provides the settings for Web
  * security.
  */
+@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
