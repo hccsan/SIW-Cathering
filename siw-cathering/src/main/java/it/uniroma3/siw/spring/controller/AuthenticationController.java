@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package it.uniroma3.siw.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo.controller.validator.CredentialsValidator;
-import com.example.demo.controller.validator.UserValidator;
-import com.example.demo.model.Credentials;
-import com.example.demo.model.User;
-import com.example.demo.service.CredentialsService;
+import it.uniroma3.siw.spring.controller.validator.CredentialsValidator;
+import it.uniroma3.siw.spring.controller.validator.UserValidator;
+import it.uniroma3.siw.spring.model.Credentials;
+import it.uniroma3.siw.spring.model.User;
+import it.uniroma3.siw.spring.service.ChefService;
+import it.uniroma3.siw.spring.service.CredentialsService;
 
 @Controller
 public class AuthenticationController {
@@ -27,6 +28,9 @@ public class AuthenticationController {
 
 	@Autowired
 	private CredentialsValidator credentialsValidator;
+
+	@Autowired
+	private ChefService chefService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String showRegisterForm(Model model) {
@@ -50,6 +54,8 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("elencoChef", chefService.findAll());
+
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			return "admin/home";
 		}

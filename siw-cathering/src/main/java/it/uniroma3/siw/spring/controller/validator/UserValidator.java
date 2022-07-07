@@ -1,10 +1,10 @@
-package com.example.demo.controller.validator;
+package it.uniroma3.siw.spring.controller.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.example.demo.model.User;
+import it.uniroma3.siw.spring.model.User;
 
 /**
  * Validator for User

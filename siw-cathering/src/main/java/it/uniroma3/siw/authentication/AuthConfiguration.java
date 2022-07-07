@@ -1,6 +1,6 @@
-package com.example.demo.authentication;
+package it.uniroma3.siw.authentication;
 
-import static com.example.demo.model.Credentials.ADMIN_ROLE;
+import static it.uniroma3.siw.spring.model.Credentials.ADMIN_ROLE;
 
 import javax.sql.DataSource;
 

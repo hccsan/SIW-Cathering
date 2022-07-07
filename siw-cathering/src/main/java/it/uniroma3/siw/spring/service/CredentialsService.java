@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package it.uniroma3.siw.spring.service;
 
 import java.util.Optional;
 
@@ -7,8 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.model.Credentials;
-import com.example.demo.repository.CredentialsRepository;
+import it.uniroma3.siw.spring.model.Credentials;
+import it.uniroma3.siw.spring.repository.CredentialsRepository;
 
 @Service
 public class CredentialsService {

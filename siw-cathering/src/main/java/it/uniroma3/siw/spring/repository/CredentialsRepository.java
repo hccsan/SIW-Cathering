@@ -1,10 +1,10 @@
-package com.example.demo.repository;
+package it.uniroma3.siw.spring.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.demo.model.Credentials;
+import it.uniroma3.siw.spring.model.Credentials;
 
 public interface CredentialsRepository extends CrudRepository<Credentials, Long> {
 

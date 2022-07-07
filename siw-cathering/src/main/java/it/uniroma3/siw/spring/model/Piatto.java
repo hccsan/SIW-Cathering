@@ -1,7 +1,8 @@
-package com.example.demo.model;
+package it.uniroma3.siw.spring.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Buffet {
+public class Piatto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,17 +27,16 @@ public class Buffet {
 	@Column(nullable = false)
 	private String descrizione;
 
-	@Column(nullable = true, length = 64)
-	private String photos;
-
-	// JPA
 	@ManyToOne
-	private Chef chef; // ogni buffet e' proposto da uno chef
+	private Buffet buffet;
 
-	@OneToMany
-	private List<Piatto> piattiBuffet; // ogni buffet contiene uno o piu' piatti
+	@OneToMany(mappedBy = "piatto", cascade = CascadeType.ALL)
+	private List<Ingrediente> ingrediente;
 
-	// IMMAGINI
+	public Piatto(@NotBlank String nome, List<Ingrediente> ingredienti) {
+		this.nome = nome;
+		this.ingrediente = ingredienti;
+	}
 
 	public Long getId() {
 		return id;
@@ -62,28 +62,24 @@ public class Buffet {
 		this.descrizione = descrizione;
 	}
 
-	public String getPhotos() {
-		return photos;
+	public Buffet getBuffet() {
+		return buffet;
 	}
 
-	public void setPhotos(String photos) {
-		this.photos = photos;
+	public void setBuffet(Buffet buffet) {
+		this.buffet = buffet;
 	}
 
-	public Chef getChef() {
-		return chef;
+	public List<Ingrediente> getIngrediente() {
+		return ingrediente;
 	}
 
-	public void setChef(Chef chef) {
-		this.chef = chef;
+	public void setIngrediente(List<Ingrediente> ingrediente) {
+		this.ingrediente = ingrediente;
 	}
 
-	public List<Piatto> getPiattiBuffet() {
-		return piattiBuffet;
-	}
-
-	public void setPiattiBuffet(List<Piatto> piattiBuffet) {
-		this.piattiBuffet = piattiBuffet;
+	public void addIngrediente(Ingrediente ingredente) {
+		this.ingrediente.add(ingredente);
 	}
 
 }
