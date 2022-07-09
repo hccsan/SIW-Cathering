@@ -33,6 +33,10 @@ public class Piatto {
 	@OneToMany(mappedBy = "piatto", cascade = CascadeType.ALL)
 	private List<Ingrediente> ingrediente;
 
+	public Piatto() {
+
+	}
+
 	public Piatto(@NotBlank String nome, List<Ingrediente> ingredienti) {
 		this.nome = nome;
 		this.ingrediente = ingredienti;

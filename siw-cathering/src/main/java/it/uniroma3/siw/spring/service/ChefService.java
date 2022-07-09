@@ -60,4 +60,9 @@ public class ChefService {
 		return chefRepository.existsByNomeAndCognome(chef.getNome(), chef.getCognome());
 	}
 
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
+	}
+
 }
